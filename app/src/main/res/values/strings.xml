@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">smartrack</string>
+
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_phone">Enter your phone</string>
+    <string name="logout">Logout</string>
+    <string name="default_web_client_id" translatable="false">773097650416-vt4eu0td1pj5hupugu3h208dpplit85l.apps.googleusercontent.com</string>
+    <string name="password">Password</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="sign_up">sign up</string>
+    <string name="phone">Phone</string>
+    <string name="name">Name</string>
+    <string name="supplier">supplier</string>
+    <string name="driver">driver</string>
+    <string name="logo_icon">logo icon</string>
+    <string name="login">Login</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="wellcome_to_smartrack">Wellcome To smartrack</string>
+    <string name="dont_have_an_account_sign_up">Dont have an account? Sign up</string>
+</resources>
