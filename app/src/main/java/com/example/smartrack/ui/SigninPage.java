@@ -39,6 +39,16 @@ public class SigninPage extends AppCompatActivity {
     FirebaseDatabase rootDB;
     DatabaseReference mRef;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(getApplicationContext(), MainLandingPage.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,52 +65,69 @@ public class SigninPage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //if user already login
-        if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainLandingPage.class));
-            finish();
-        }
+        createRequest();
 
         btnSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkInputAndRegisterUser();
+                signIn();
             }
 
         });
     }
 
+    private void createRequest() {
 
-    public void checkInputAndRegisterUser() {
-        String strName, strSurname, strPhone, strMail, strPassword;
-        strName = name.getText().toString().trim();
-        strSurname = surname.getText().toString().trim();
-        strPhone = phone.getText().toString().trim();
-        strMail = mail.getText().toString().trim();
-        strPassword = password.getText().toString().trim();
+        String strMail = mail.getText().toString().trim();
+        String strPassword = password.getText().toString().trim();
+
+        //register the user in firebase
+        mAuth.createUserWithEmailAndPassword(strMail, strPassword)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(SigninPage.this, "User Created", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(SigninPage.this, "Error"+task.getException(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+
+                    }
+                });
+
+    }
+
+
+    public void signIn() {
+        String strName = name.getText().toString().trim();
+        String strSurname = surname.getText().toString().trim();
+        String strPhone = phone.getText().toString().trim();
+        String strMail = mail.getText().toString().trim();
+        String strPassword = password.getText().toString().trim();
 
         //Name check
         if (strName.isEmpty()) {
-            name.setError("Display Name is required");
+            name.setError("Name is required");
             name.requestFocus();
             return;
         }
 
         if (strName.length() < 1) {
-            name.setError("Length of Display name should at least 1");
+            name.setError("Name Length should at least 2");
             name.requestFocus();
             return;
         }
 
         //Surname check
         if (strSurname.isEmpty()) {
-            surname.setError("Display Surname is required");
+            surname.setError("Surname is required");
             surname.requestFocus();
             return;
         }
 
         if (strName.length() < 1) {
-            surname.setError("Length of Display surname should at least 1");
+            surname.setError("Surname Length should at least 1");
             surname.requestFocus();
             return;
         }
@@ -114,12 +141,6 @@ public class SigninPage extends AppCompatActivity {
 
         if (strPhone.length() != 10) {
             phone.setError("Phone number is 10 digit number");
-            phone.requestFocus();
-            return;
-        }
-
-        if (Patterns.PHONE.matcher(strPhone).matches()) {
-            phone.setError("Please enter a valid phone number");
             phone.requestFocus();
             return;
         }
@@ -152,29 +173,40 @@ public class SigninPage extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        //register the user in firebase
-        mAuth.createUserWithEmailAndPassword(strMail, strPassword)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        // sign in user
+        mAuth.signInWithEmailAndPassword(strMail, strPassword)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
-                            // Save in firebase
+                            // Sign in success
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(SigninPage.this, "Sign in success", Toast.LENGTH_LONG).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             rootDB=FirebaseDatabase.getInstance();
                             mRef=rootDB.getReference("Users");
                             String uuid= UUID.randomUUID().toString();
                             User newUser=new User(uuid,strName,strSurname,strMail,strPhone,strPassword);
                             mRef.child(uuid).setValue(newUser);
-                            Toast.makeText(SigninPage.this, "User Created", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(), MainLandingPage.class));
+
                         } else {
-                            Toast.makeText(SigninPage.this, "Error"+task.getException(), Toast.LENGTH_LONG).show();
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(SigninPage.this, "Authentication failed", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
-
                     }
                 });
+
     }
+
+
+
+
+
+
+
+
 }
 
 

@@ -110,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginBottom="34dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/signinButton"
         app:layout_constraintStart_toStartOf="@+id/signinButton"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />

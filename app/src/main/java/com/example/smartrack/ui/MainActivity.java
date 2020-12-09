@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.smartrack.R;
 
 public class MainActivity extends AppCompatActivity {
-    private static int TIME_OUT=2000;
+    private static int TIME_OUT=4000;
 
     ImageView image;
     TextView appName, slogan;
@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 /*
+
+        ObjectAnimator mover = ObjectAnimator.ofFloat(aniView, "X", 700f);
+        mover.setDuration(4500);
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(aniView, "alpha", 1f, 0f);
+        fadeOut.setDuration(4500);
+
+
         //Wellcome logo screen
         new Thread(new Runnable() {
             @Override
