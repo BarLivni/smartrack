@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginPage extends AppCompatActivity {
 
-    EditText mail,password;
+    EditText mail, password;
     TextView newUserText;
     ProgressBar progressBar;
     Button btnLogin;
@@ -36,18 +36,9 @@ public class LoginPage extends AppCompatActivity {
         password = (EditText) findViewById(R.id.edit_password);
         progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
         btnLogin = findViewById(R.id.loginButton);
-        newUserText=findViewById(R.id.new_user);
+        newUserText = findViewById(R.id.new_user);
 
         mAuth = FirebaseAuth.getInstance();
-
-        newUserText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginPage.this, SigninPage.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,23 +75,30 @@ public class LoginPage extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 //Authenticate user
-                mAuth.signInWithEmailAndPassword(strMail,strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(strMail, strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(LoginPage.this,"Logged in Successfully",Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginPage.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainLandingPage.class));
                             finish();
-                        }else{
-                            Toast.makeText(LoginPage.this, "Error"+task.getException(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(LoginPage.this, "Error" + task.getException(), Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
             }
+            });
+
+
+        newUserText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginPage.this,SigninPage.class);
+                startActivity(intent);
+            }
         });
-
-
 
 
     }
