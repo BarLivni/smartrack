@@ -20,6 +20,10 @@ public class MainLandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_landing_page);
 
+
+
+
+
         btnLogout=findViewById(R.id.logoutButton);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

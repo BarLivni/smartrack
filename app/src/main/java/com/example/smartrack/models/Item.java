@@ -7,10 +7,11 @@ public class Item {
     public String name;
     public int value;        // price
     public int weight;
-    public Vertex location;     //VertexID
+    public int location;     //VertexID
 
 
-    public int getSerialNumber(){
-        return this.serialNumber;
+    public Item() {
     }
+
+
 }
