@@ -145,6 +145,7 @@ public class SigninPage extends AppCompatActivity {
                                     mRef.child(id).setValue(newUser);
                                     Intent intent = new Intent(SigninPage.this, MainLandingPage.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(SigninPage.this, "Error" + task.getException(), Toast.LENGTH_LONG).show();
                                     progressBar.setVisibility(View.GONE);

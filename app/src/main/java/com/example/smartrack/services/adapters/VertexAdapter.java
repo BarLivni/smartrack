@@ -15,26 +15,34 @@ import com.example.smartrack.models.Vertex;
 
 import java.util.List;
 
-public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.VertexViewHolder> {
+public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.ViewHolder> {
 
-    private Context mCtx;
-    private List<Vertex> verticesList;
+    public List<Vertex> verticesList;
+    public Context context;
 
-    // constructor
-    public VertexAdapter(Context mCtx, List<Vertex> verticesList) {
-        this.mCtx = mCtx;
+    //constructor
+    public VertexAdapter(List<Vertex> verticesList, Context context) {
         this.verticesList = verticesList;
+        this.context = context;
     }
 
+    //methods
     @NonNull
     @Override
-    public VertexViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        
+    public VertexAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v=LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.vertex_list_layout,parent,false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VertexViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VertexAdapter.ViewHolder holder, int position) {
+        Vertex vertexRow=verticesList.get(position);
 
+        holder.textViewCity.setText(vertexRow.city);
+        holder.textViewAddress.setText(vertexRow.address);
+        holder.textViewNumberItem.setText(vertexRow.itemsInVertex.size());
+        holder.textViewZipcode.setText(vertexRow.zipcode);
     }
 
     @Override
@@ -42,26 +50,23 @@ public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.VertexView
         return verticesList.size();
     }
 
-    public class VertexViewHolder extends RecyclerView.ViewHolder{
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewCity,textViewAddress,textViewNumberItem,textViewZipcode;
         public ImageView imageViewAdd;
-        public VertexViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewCity=(TextView) itemView.findViewById(R.id.textViewCity);
             textViewAddress=(TextView) itemView.findViewById(R.id.textViewAddress);
             textViewNumberItem=(TextView) itemView.findViewById(R.id.textViewNumberItem);
             textViewZipcode=(TextView) itemView.findViewById(R.id.textViewZipcode);
-
-            // set onclick listener
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            imageViewAdd=itemView.findViewById(R.id.imageViewAdd);
         }
     }
+
+
+
 
 }

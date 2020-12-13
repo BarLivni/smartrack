@@ -6,12 +6,6 @@
     android:orientation="vertical"
     tools:context=".ui.AddVertex">
 
-<androidx.appcompat.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/logoPurple">
-</androidx.appcompat.widget.Toolbar>
-
 
     <TextView
         android:id="@+id/textViewName"
@@ -24,6 +18,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large.Inverse" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/viewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">

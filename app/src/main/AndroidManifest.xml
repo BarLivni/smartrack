@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartrack">
         <activity android:name=".ui.AddVertex"></activity>
-        <activity android:name=".ui.MainLandingPage" />
+        <activity android:name=".ui.MainLandingPage" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name=".ui.LoginPage" />
         <activity android:name=".ui.SigninPage" />
         <activity android:name=".ui.MainActivity">

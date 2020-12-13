@@ -15,9 +15,6 @@ import com.google.android.material.navigation.NavigationView;
 
 public class AddVertex extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
-    NavigationView navView;
     RecyclerView verticesList;
     Adapter adapter;
 
@@ -26,6 +23,8 @@ public class AddVertex extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vertex);
+
+        verticesList=findViewById(R.id.recyclerViewVertices);
 
         // set Globals
         ((Globals) this.getApplication()).setVertexCounter(0);

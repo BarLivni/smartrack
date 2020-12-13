@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="General">
+        <menu>
+            <item
+                android:id="@+id/newDrive"
+                android:icon="@drawable/car_icon"
+                android:title="New Drive"></item>
+
+            <item
+                android:id="@+id/supplierOptions"
+                android:icon="@drawable/option_icon"
+                android:title="Supplier Options"></item>
+
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/settings_icon"
+                android:title="Setting"></item>
+        </menu>
+    </item>
+
+    <item android:title="Support">
+        <menu>
+            <item
+                android:id="@+id/rateApp"
+                android:icon="@drawable/star_icon"
+                android:title="Rate App"></item>
+
+            <item
+                android:id="@+id/shareApp"
+                android:icon="@drawable/share_icon"
+                android:title="Share App"></item>
+
+        </menu>
+    </item>
+
+    <item android:title="Logout">
+        <menu>
+            <item
+                android:id="logout"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout"></item>
+        </menu>
+    </item>
+
+</menu>
