@@ -32,4 +32,10 @@
     <string name="bar_livni">Bar Livni</string>
     <string name="barlivin_gmail_com">barlivin@gmail.com</string>
     <string name="setting">Setting</string>
+    <string name="add_item">Add Item</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_serial_number">Item Serial Number</string>
+    <string name="location_verex_id">Location (Verex Id)</string>
+    <string name="value">Value</string>
+    <string name="weight">Weight</string>
 </resources>
