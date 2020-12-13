@@ -1,5 +1,6 @@
 package com.example.smartrack.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,33 +11,37 @@ import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.smartrack.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainLandingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    //Button btnLogout; //maybe add logout button
+    //Variables
     DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
-    NavigationView navView;
+    NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_landing_page);
 
-        Toolbar toolbar =   findViewById(R.id.toolbar);
+        drawerLayout=findViewById(R.id.drawer_layout);
+        navigationView=findViewById(R.id.nav_view);
+        toolbar=findViewById(R.id.toolbarHomePage);
+
         setSupportActionBar(toolbar);
 
-        drawerLayout=findViewById(R.id.drawer);
-        navView=findViewById(R.id.nav_view);
-        navView.setNavigationItemSelectedListener(this);
-
-        toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,"open","close");
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav)
         drawerLayout.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(true);
+        //toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.setCheckedItem(R.id.home);
 
     }
 
@@ -44,23 +49,37 @@ public class MainLandingPage extends AppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            default:
-                Toast.makeText(this,"Coming soon",Toast.LENGTH_LONG).show();
+            case R.id.newDrive:
+                Intent newDriveIntent = new Intent(MainLandingPage.this,NewDrivePage.class);
+                startActivity(newDriveIntent);
+                break;
+            case R.id.supplierOptions:
+                Intent supplierHomeIntent = new Intent(MainLandingPage.this,SupplierHomePage.class);
+                startActivity(supplierHomeIntent);
+                break;
+            case R.id.setting:
+                break;
+            case R.id.rateApp:
+                break;
+            case R.id.shareApp:
+                Toast.makeText(this,"Share",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.logout:
+                break;
         }
-        return false;
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.option_menu,menu);
-        return super.onCreateOptionsMenu(menu);
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.setting) {
-            Toast.makeText(this,"Setting menu is clicked",Toast.LENGTH_LONG).show();}
-        return super.onOptionsItemSelected(item);
-    }
+
 }

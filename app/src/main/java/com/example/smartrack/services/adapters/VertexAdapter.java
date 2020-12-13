@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,12 +45,14 @@ public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.ViewHolder
         //bind the textView with data recieve
         Vertex vertexRow=verticesList.get(position);
 
-        int vId=vertexRow.id;
+        //int vId=vertexRow.id;
 
         holder.textViewCity.setText(vertexRow.city);
         holder.textViewAddress.setText(vertexRow.address);
         holder.textViewNumberItem.setText(vertexRow.itemsInVertex.size());
         holder.textViewZipcode.setText(vertexRow.zipcode);
+
+        holder.vertexId.setText(vertexRow.id);
         //holder.imageViewAdd.set // holder.onClick(position)
     }
 
@@ -60,7 +63,7 @@ public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.ViewHolder
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textViewCity,textViewAddress,textViewNumberItem,textViewZipcode;
+        public TextView textViewCity,textViewAddress,textViewNumberItem,textViewZipcode, vertexId;
         public ImageView imageViewAdd;
 
         public ViewHolder(@NonNull View itemView) {
@@ -71,6 +74,9 @@ public class VertexAdapter extends RecyclerView.Adapter<VertexAdapter.ViewHolder
             textViewNumberItem=(TextView) itemView.findViewById(R.id.textViewNumberItem);
             textViewZipcode=(TextView) itemView.findViewById(R.id.textViewZipcode);
             imageViewAdd=(ImageView) itemView.findViewById(R.id.imageViewAdd);
+
+            vertexId=(EditText) itemView.findViewById(R.id.editTextVertexIdNumber);
+
         }
 
         //set on click listener

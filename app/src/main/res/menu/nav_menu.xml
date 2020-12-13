@@ -3,6 +3,12 @@
 
     <item android:title="General">
         <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/home"
+                    android:icon="@drawable/home_icon"
+                    android:title="Home"></item>
+
             <item
                 android:id="@+id/newDrive"
                 android:icon="@drawable/car_icon"
@@ -17,11 +23,13 @@
                 android:id="@+id/setting"
                 android:icon="@drawable/settings_icon"
                 android:title="Setting"></item>
+            </group>
         </menu>
     </item>
 
     <item android:title="Support">
         <menu>
+            <group android:checkableBehavior="single">
             <item
                 android:id="@+id/rateApp"
                 android:icon="@drawable/star_icon"
@@ -31,16 +39,19 @@
                 android:id="@+id/shareApp"
                 android:icon="@drawable/share_icon"
                 android:title="Share App"></item>
+            </group>
 
         </menu>
     </item>
 
     <item android:title="Logout">
         <menu>
+            <group android:checkableBehavior="single">
             <item
-                android:id="logout"
+                android:id="@+id/logout"
                 android:icon="@drawable/logout_icon"
                 android:title="Logout"></item>
+        </group>
         </menu>
     </item>
 

@@ -13,7 +13,8 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:background="@color/logoPurple"
-        android:padding="10dp"
+        android:padding="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"></TextView>
 
@@ -75,6 +76,16 @@
             android:inputType="number"
             android:hint="@string/weight"
             android:autofillHints="" />
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Item"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            android:gravity="center"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
