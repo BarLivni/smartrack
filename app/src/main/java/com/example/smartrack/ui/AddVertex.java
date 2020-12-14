@@ -1,23 +1,16 @@
 package com.example.smartrack.ui;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.widget.Adapter;
-import android.widget.Toast;
-
 import com.example.smartrack.R;
-import com.example.smartrack.models.Globals;
-import com.example.smartrack.models.Graph;
 import com.example.smartrack.models.Vertex;
 import com.example.smartrack.services.adapters.VertexAdapter;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

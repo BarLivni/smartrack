@@ -45,11 +45,12 @@
     <string name="setting">Setting</string>
     <string name="share">Share</string>
     <string name="rate_us">Rate Us</string>
-    <string name="logout">Logout</string>
     <string name="car_icon">car icon</string>
     <string name="option_icon">option icon</string>
     <string name="setting_icon">setting icon</string>
     <string name="share_icon">share icon</string>
     <string name="rate_icon">rate icon</string>
     <string name="logout_icon">logout icon</string>
+
+
 </resources>

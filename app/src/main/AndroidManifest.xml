@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Smartrack">
+        android:theme="@style/Theme.Smartrack.NoActionBar">
         <activity android:name=".ui.SupplierHomePage"></activity>
         <activity android:name=".ui.NewDrivePage" />
         <activity android:name=".ui.AddItem" />
