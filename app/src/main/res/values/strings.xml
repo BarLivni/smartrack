@@ -51,6 +51,10 @@
     <string name="share_icon">share icon</string>
     <string name="rate_icon">rate icon</string>
     <string name="logout_icon">logout icon</string>
+    <string name="start_drive">start drive</string>
+    <string name="max_weight">Max Weight</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
 
 
 </resources>

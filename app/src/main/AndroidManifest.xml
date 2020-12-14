@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Smartrack.NoActionBar">
-        <activity android:name=".ui.SupplierHomePage"></activity>
+        <activity android:name=".ui.AddEdge"></activity>
+        <activity android:name=".ui.SupplierHomePage" />
         <activity android:name=".ui.NewDrivePage" />
         <activity android:name=".ui.AddItem" />
         <activity android:name=".ui.AddVertex" />

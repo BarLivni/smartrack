@@ -128,7 +128,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
                     android:contentDescription="@string/option_icon"
-                    app:srcCompat="@drawable/car_icon" />
+                    app:srcCompat="@drawable/option_icon" />
                 <TextView
                     android:id="@+id/textViewSupplierOptions"
                     android:layout_width="wrap_content"

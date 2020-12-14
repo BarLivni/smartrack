@@ -3,6 +3,8 @@ package com.example.smartrack.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,12 +16,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.smartrack.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class MainLandingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainLandingPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
+    ImageView carImage,optionImage,settingImage,shareImage,logoutImage, rateImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,14 @@ public class MainLandingPage extends AppCompatActivity implements NavigationView
 
         navigationView.setCheckedItem(R.id.home);
 
+        findViewById(R.id.carImage).setOnClickListener(this);
+        findViewById(R.id.optionImage).setOnClickListener(this);
+        findViewById(R.id.settingImage).setOnClickListener(this);
+        findViewById(R.id.shareImage).setOnClickListener(this);
+        findViewById(R.id.logoutImage).setOnClickListener(this);
+        findViewById(R.id.rateImage).setOnClickListener(this);
+
+
     }
 
 
@@ -58,11 +71,15 @@ public class MainLandingPage extends AppCompatActivity implements NavigationView
             case R.id.setting:
                 break;
             case R.id.rateApp:
+                Toast.makeText(this,"5 stars",Toast.LENGTH_LONG).show();
                 break;
             case R.id.shareApp:
                 Toast.makeText(this,"Share",Toast.LENGTH_LONG).show();
                 break;
             case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent loginIntent = new Intent(MainLandingPage.this,LoginPage.class);
+                startActivity(loginIntent);
                 break;
         }
 
@@ -78,6 +95,37 @@ public class MainLandingPage extends AppCompatActivity implements NavigationView
             super.onBackPressed();
         }
     }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.carImage:
+                Intent intent = new Intent(MainLandingPage.this,NewDrivePage.class);
+                startActivity(intent);
+                break;
+            case R.id.optionImage:
+                Intent intent1 = new Intent(MainLandingPage.this,SupplierHomePage.class);
+                startActivity(intent1);
+                break;
+            case R.id.settingImage:
+                Toast.makeText(MainLandingPage.this,"Setting",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.rateImage:
+                Toast.makeText(MainLandingPage.this,"5 stars",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.shareImage:
+                Toast.makeText(MainLandingPage.this,"Share",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.logoutImage:
+                FirebaseAuth.getInstance().signOut();
+                Intent loginIntent = new Intent(MainLandingPage.this,LoginPage.class);
+                startActivity(loginIntent);
+                break;
+        }
+    }
+
+
 
 
 }
